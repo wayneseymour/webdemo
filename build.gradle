@@ -1,0 +1,18 @@
+plugins {
+    id 'war'  
+}
+
+repositories {
+    jcenter()
+}
+
+// The war plugin adds the configurations providedCompile 
+// and providedRuntime, analogous to compile and runtime 
+// in regular Java applications, 
+// to represent dependencies that are needed locally
+// but should not be added to the generated 
+// webdemo.war file.
+dependencies {
+    providedCompile 'javax.servlet:javax.servlet-api:3.1.0' 
+    testCompile 'junit:junit:4.12'
+}
