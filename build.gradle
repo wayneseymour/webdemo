@@ -2,11 +2,17 @@ plugins {
     id 'war'  
     id 'org.gretty' version '2.2.0'
 }
-
 repositories {
     jcenter()
 }
-
+// The gretty plugin needs to know which task 
+// requires a start and stop of the server. 
+// Frequently that is assigned to your own task, 
+// but to keep things simple just use the 
+// existing test task.
+gretty {
+    integrationTestTask = 'test'  
+}
 // The war plugin adds the configurations providedCompile 
 // and providedRuntime, analogous to compile and runtime 
 // in regular Java applications, 
@@ -17,4 +23,6 @@ dependencies {
     providedCompile 'javax.servlet:javax.servlet-api:3.1.0' 
     testCompile 'junit:junit:4.12'
     testCompile 'org.mockito:mockito-core:2.25.0'
+    testCompile 'io.github.bonigarcia:webdrivermanager:1.6.1' 
+    testCompile 'org.seleniumhq.selenium:selenium-java:3.3.1'
 }
